@@ -3,1498 +3,482 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MyMilesAI — Smart Mileage Tracking for Tax Deductions</title>
-<meta name="description" content="Automatically track your business mileage with AI. Save thousands in tax deductions. IRS-ready reports. Free to try — no downloads required.">
-<meta name="keywords" content="mileage tracker, business mileage, tax deduction, IRS mileage, mileage log, mileage tracking app">
-<meta name="author" content="MyMilesAI">
-
-<!-- Open Graph -->
-<meta property="og:title" content="MyMilesAI — Smart Mileage Tracking">
-<meta property="og:description" content="Automatically track your business mileage with AI. Save thousands in tax deductions.">
-<meta property="og:image" content="https://adsontrack1-ctrl.github.io/mymilesai.com--website/og-image.png">
+<title>MyMilesAI — Every Mile Counts</title>
+<meta name="description" content="The smartest mileage tracker for freelancers and small businesses. AI-powered, IRS-ready, effortless. Save thousands at tax time.">
+<meta property="og:title" content="MyMilesAI — Every Mile Counts">
+<meta property="og:description" content="AI-powered mileage tracking. Save thousands at tax time.">
 <meta property="og:url" content="https://mymilesai.com">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="MyMilesAI">
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MyMilesAI — Smart Mileage Tracking">
-<meta name="twitter:description" content="Automatically track your business mileage with AI. Save thousands in tax deductions.">
-
-<!-- Favicon (emoji-based, works everywhere) -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234F8EF7'/><text y='.9em' font-size='75' x='10'>🚗</text></svg>">
-
-<!-- Canonical -->
 <link rel="canonical" href="https://mymilesai.com">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234F8EF7'/><text y='.88em' font-size='72' x='12'>🚗</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #080912;
-  --bg2: #0e1020;
-  --card: rgba(255,255,255,0.04);
-  --border: rgba(255,255,255,0.08);
-  --text: #f0f0f8;
-  --text2: rgba(240,240,248,0.55);
-  --text3: rgba(240,240,248,0.3);
-  --blue: #4F8EF7;
-  --green: #00D4AA;
-  --pink: #FF6B9D;
+  --bg:     #080912;
+  --bg2:    #0e1020;
+  --bg3:    #1a1a2e;
+  --bg4:    #12122a;
+  --card:   rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.07);
+  --blue:   #4F8EF7;
+  --green:  #00D4AA;
+  --pink:   #FF6B9D;
   --purple: #8B5CF6;
-  --glow-blue: rgba(79,142,247,0.15);
-  --glow-green: rgba(0,212,170,0.12);
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-  line-height: 1.6;
-}
-
-/* ===== NOISE TEXTURE ===== */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.4;
-}
-
-/* ===== NAV ===== */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  padding: 20px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(8,9,18,0.8);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 800;
-  font-size: 20px;
-  color: var(--text);
-  text-decoration: none;
-}
-
-.nav-logo-icon {
-  width: 36px; height: 36px;
-  background: linear-gradient(135deg, var(--blue), var(--purple));
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 32px;
-  list-style: none;
-}
-
-.nav-links a {
-  color: var(--text2);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--text); }
-
-.nav-cta {
-  background: linear-gradient(135deg, var(--blue), var(--purple));
-  color: white !important;
-  padding: 10px 22px;
-  border-radius: 50px;
-  font-weight: 600 !important;
-  font-size: 14px !important;
-  transition: opacity 0.2s, transform 0.2s !important;
-}
-.nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
-
-/* ===== HERO ===== */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 120px 24px 80px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-glow {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(ellipse, rgba(79,142,247,0.12) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero-glow2 {
-  position: absolute;
-  top: 40%;
-  left: 30%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(ellipse, rgba(0,212,170,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(79,142,247,0.1);
-  border: 1px solid rgba(79,142,247,0.25);
-  border-radius: 50px;
-  padding: 8px 18px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--blue);
-  margin-bottom: 32px;
-  animation: fadeUp 0.6s ease both;
-}
-
-.hero-badge::before {
-  content: '';
-  width: 6px; height: 6px;
-  background: var(--blue);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
-}
-
-h1 {
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(28px, 4.5vw, 58px);
-  font-weight: 800;
-  line-height: 1.0;
-  letter-spacing: -2px;
-  margin-bottom: 24px;
-  animation: fadeUp 0.6s 0.1s ease both;
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, var(--blue) 0%, var(--green) 50%, var(--pink) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-sub {
-  font-size: clamp(16px, 2.5vw, 22px);
-  color: var(--text2);
-  max-width: 560px;
-  margin: 0 auto 48px;
-  font-weight: 300;
-  line-height: 1.7;
-  animation: fadeUp 0.6s 0.2s ease both;
-}
-
-.hero-btns {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-  animation: fadeUp 0.6s 0.3s ease both;
-  margin-bottom: 80px;
-}
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, var(--blue), var(--purple));
-  color: white;
-  padding: 16px 32px;
-  border-radius: 50px;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 8px 32px rgba(79,142,247,0.3);
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(79,142,247,0.4); }
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 16px 32px;
-  border-radius: 50px;
-  font-size: 16px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: transform 0.2s, background 0.2s;
-  backdrop-filter: blur(10px);
-}
-.btn-secondary:hover { transform: translateY(-2px); background: rgba(255,255,255,0.08); }
-
-/* ===== PHONE MOCKUP ===== */
-.hero-phone {
-  animation: fadeUp 0.8s 0.4s ease both;
-  position: relative;
-}
-
-.phone-frame {
-  width: 260px;
-  height: 520px;
-  background: linear-gradient(180deg, #1a1a2e 0%, #12122a 100%);
-  border-radius: 40px;
-  border: 2px solid rgba(255,255,255,0.12);
-  box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05), inset 0 1px 0 rgba(255,255,255,0.1);
-  overflow: hidden;
-  position: relative;
-  margin: 0 auto;
-}
-
-.phone-notch {
-  width: 100px; height: 28px;
-  background: #0e1020;
-  border-radius: 0 0 20px 20px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.phone-screen {
-  padding: 16px;
-  height: calc(100% - 28px);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.phone-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.phone-logo {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 800;
-  font-size: 14px;
-  color: white;
-}
-
-.phone-avatar {
-  width: 28px; height: 28px;
-  background: linear-gradient(135deg, var(--blue), var(--purple));
-  border-radius: 50%;
-}
-
-.phone-stat-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.phone-stat {
-  background: rgba(255,255,255,0.06);
-  border-radius: 14px;
-  padding: 12px;
-  border: 1px solid rgba(255,255,255,0.06);
-}
-
-.phone-stat-val {
-  font-family: 'Poppins', sans-serif;
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--blue);
-}
-
-.phone-stat-val.green { color: var(--green); }
-.phone-stat-val.pink { color: var(--pink); }
-.phone-stat-val.white { color: white; }
-
-.phone-stat-label {
-  font-size: 9px;
-  color: rgba(255,255,255,0.4);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-top: 2px;
-}
-
-.phone-trip {
-  background: rgba(255,255,255,0.04);
-  border-radius: 14px;
-  padding: 12px;
-  border: 1px solid rgba(255,255,255,0.06);
-}
-
-.phone-trip-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.phone-trip-title { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); }
-.phone-trip-badge {
-  font-size: 9px;
-  background: rgba(0,212,170,0.2);
-  color: var(--green);
-  padding: 3px 8px;
-  border-radius: 50px;
-  font-weight: 600;
-}
-
-.phone-route {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.phone-route-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.phone-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.phone-dot.start { background: var(--green); }
-.phone-dot.end { background: var(--pink); }
-
-.phone-route-addr {
-  font-size: 10px;
-  color: rgba(255,255,255,0.7);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.phone-miles {
-  font-size: 14px;
-  font-weight: 800;
-  color: white;
-  text-align: right;
-  margin-top: 6px;
-  font-family: 'Poppins', sans-serif;
-}
-
-.phone-glow {
-  position: absolute;
-  bottom: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(ellipse, rgba(79,142,247,0.3) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-/* ===== STATS STRIP ===== */
-.stats-strip {
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 40px 40px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-.stat-item-val {
-  font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 40px;
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--blue), var(--green));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.stat-item-label {
-  font-size: 14px;
-  color: var(--text2);
-  margin-top: 4px;
-}
-
-/* ===== FEATURES ===== */
-.section {
-  padding: 100px 40px;
-  max-width: 1100px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.section-badge {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--green);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 16px;
-}
-
-.section-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(32px, 5vw, 52px);
-  font-weight: 800;
-  letter-spacing: -1px;
-  line-height: 1.1;
-  margin-bottom: 16px;
-}
-
-.section-sub {
-  font-size: 18px;
-  color: var(--text2);
-  max-width: 500px;
-  font-weight: 300;
-  line-height: 1.7;
-  margin-bottom: 60px;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.feature-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 32px;
-  transition: transform 0.3s, border-color 0.3s, background 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-
-.feature-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-}
-
-.feature-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(79,142,247,0.3);
-  background: rgba(79,142,247,0.04);
-}
-
-.feature-icon {
-  width: 52px; height: 52px;
-  border-radius: 16px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.feature-icon.blue { background: rgba(79,142,247,0.15); }
-.feature-icon.green { background: rgba(0,212,170,0.15); }
-.feature-icon.pink { background: rgba(255,107,157,0.15); }
-.feature-icon.purple { background: rgba(139,92,246,0.15); }
-.feature-icon.orange { background: rgba(255,183,77,0.15); }
-.feature-icon.teal { background: rgba(0,212,212,0.15); }
-
-.feature-card h3 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.feature-card p {
-  font-size: 14px;
-  color: var(--text2);
-  line-height: 1.7;
-}
-
-/* ===== HOW IT WORKS ===== */
-.how-bg {
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  counter-reset: steps;
-}
-
-.step {
-  position: relative;
-  padding-left: 0;
-}
-
-.step-num {
-  font-family: 'Poppins', sans-serif;
-  font-size: 48px;
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--blue), var(--purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-  margin-bottom: 16px;
-}
-
-.step-icon {
-  font-size: 32px;
-  margin-bottom: 16px;
-  display: block;
-}
-
-.step h3 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.step p {
-  font-size: 15px;
-  color: var(--text2);
-  line-height: 1.7;
-}
-
-/* ===== CTA ===== */
-.cta-section {
-  text-align: center;
-  padding: 100px 24px;
-  position: relative;
-  overflow: hidden;
-}
-
-.cta-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 400px;
-  background: radial-gradient(ellipse, rgba(79,142,247,0.12) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.cta-section h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(36px, 6vw, 64px);
-  font-weight: 800;
-  letter-spacing: -1.5px;
-  line-height: 1.1;
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 1;
-}
-
-.cta-section p {
-  font-size: 18px;
-  color: var(--text2);
-  margin-bottom: 40px;
-  position: relative;
-  z-index: 1;
-  font-weight: 300;
-}
-
-/* ===== PRICING ===== */
-.pricing-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.pricing-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 28px;
-  padding: 36px;
-  position: relative;
-  transition: transform 0.3s, border-color 0.3s;
-}
-
-.pricing-card:hover { transform: translateY(-4px); }
-
-.pricing-card.pro {
-  background: linear-gradient(135deg, rgba(79,142,247,0.08), rgba(139,92,246,0.08));
-  border-color: rgba(79,142,247,0.3);
-}
-
-.pricing-card.pro::before {
-  content: 'MOST POPULAR';
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, var(--blue), var(--purple));
-  color: white;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  padding: 5px 16px;
-  border-radius: 50px;
-  white-space: nowrap;
-}
-
-.pricing-plan {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text3);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 12px;
-}
-
-.pricing-price {
-  font-family: 'Poppins', sans-serif;
-  font-size: 52px;
-  font-weight: 800;
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.pricing-price span {
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--text2);
-}
-
-.pricing-period {
-  font-size: 14px;
-  color: var(--text3);
-  margin-bottom: 28px;
-}
-
-.pricing-divider {
-  height: 1px;
-  background: var(--border);
-  margin-bottom: 24px;
-}
-
-.pricing-features {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 32px;
-}
-
-.pricing-features li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  color: var(--text2);
-}
-
-.pricing-features li::before {
-  content: '✓';
-  width: 20px; height: 20px;
-  background: rgba(0,212,170,0.15);
-  color: var(--green);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-.pricing-features li.no::before {
-  content: '×';
-  background: rgba(255,255,255,0.05);
-  color: var(--text3);
-}
-.pricing-features li.no { color: var(--text3); }
-
-.pricing-btn {
-  display: block;
-  width: 100%;
-  padding: 14px;
-  border-radius: 14px;
-  font-size: 15px;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  transition: transform 0.2s, opacity 0.2s;
-}
-
-.pricing-btn:hover { transform: translateY(-1px); opacity: 0.9; }
-
-.pricing-btn.free {
-  background: rgba(255,255,255,0.06);
-  color: var(--text);
-  border: 1px solid var(--border);
-}
-
-.pricing-btn.pro-btn {
-  background: linear-gradient(135deg, var(--blue), var(--purple));
-  color: white;
-  box-shadow: 0 8px 24px rgba(79,142,247,0.3);
-}
-
-.pricing-note {
-  text-align: center;
-  color: var(--text3);
-  font-size: 13px;
-  margin-top: 20px;
-}
-
-@media (max-width: 600px) {
-  .pricing-grid { grid-template-columns: 1fr; }
-}
-
-/* ===== TESTIMONIALS ===== */
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.testimonial-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 28px;
-  transition: transform 0.3s;
-  position: relative;
-}
-
-.testimonial-card:hover { transform: translateY(-3px); }
-
-.stars {
-  color: #FFB74D;
-  font-size: 16px;
-  margin-bottom: 14px;
-  letter-spacing: 2px;
-}
-
-.testimonial-text {
-  font-size: 15px;
-  color: var(--text2);
-  line-height: 1.7;
-  margin-bottom: 20px;
-  font-style: italic;
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.author-avatar {
-  width: 40px; height: 40px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
-  flex-shrink: 0;
-}
-
-.author-name { font-size: 14px; font-weight: 600; color: var(--text); }
-.author-role { font-size: 12px; color: var(--text3); }
-
-/* ===== FAQ ===== */
-.faq-list {
-  max-width: 720px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.faq-item {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: border-color 0.2s;
-}
-
-.faq-item.open { border-color: rgba(79,142,247,0.3); }
-
-.faq-question {
-  width: 100%;
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  background: none;
-  border: none;
-  color: var(--text);
-  font-size: 16px;
-  font-weight: 600;
-  text-align: left;
-  cursor: pointer;
-  font-family: inherit;
-  transition: color 0.2s;
-}
-
-.faq-question:hover { color: var(--blue); }
-
-.faq-icon {
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.06);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  font-size: 16px;
-  transition: transform 0.3s, background 0.2s;
-  color: var(--text2);
-}
-
-.faq-item.open .faq-icon {
-  transform: rotate(45deg);
-  background: rgba(79,142,247,0.15);
-  color: var(--blue);
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.3s ease;
-  padding: 0 24px;
-}
-
-.faq-item.open .faq-answer {
-  max-height: 300px;
-  padding: 0 24px 20px;
-}
-
-.faq-answer p {
-  font-size: 15px;
-  color: var(--text2);
-  line-height: 1.7;
-}
-
-/* ===== TRUST BADGES ===== */
-.trust-strip {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-  padding: 48px 40px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--bg2);
-}
-
-.trust-badge {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--text2);
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.trust-badge-icon {
-  width: 36px; height: 36px;
-  border-radius: 10px;
-  background: rgba(0,212,170,0.1);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
-}
-
-/* ===== CONTACT FORM ===== */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: start;
-}
-
-.contact-info h3 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.contact-info p {
-  color: var(--text2);
-  font-size: 16px;
-  line-height: 1.7;
-  margin-bottom: 32px;
-}
-
-.contact-links {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.contact-link {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: var(--text2);
-  text-decoration: none;
-  font-size: 15px;
-  transition: color 0.2s;
-}
-
-.contact-link:hover { color: var(--blue); }
-
-.contact-link-icon {
-  width: 40px; height: 40px;
-  border-radius: 12px;
-  background: rgba(79,142,247,0.1);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
-  flex-shrink: 0;
-}
-
-.form-group {
-  margin-bottom: 16px;
-}
-
-.form-group label {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text3);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 8px;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width: 100%;
-  padding: 14px 16px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  color: var(--text);
-  font-size: 15px;
-  font-family: inherit;
-  transition: border-color 0.2s, background 0.2s;
-  -webkit-appearance: none;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: var(--blue);
-  background: rgba(79,142,247,0.04);
-}
-
-.form-group textarea { min-height: 120px; resize: vertical; }
-
-.form-submit {
-  width: 100%;
-  padding: 16px;
-  background: linear-gradient(135deg, var(--blue), var(--purple));
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: inherit;
-  transition: transform 0.2s, opacity 0.2s;
-  box-shadow: 0 8px 24px rgba(79,142,247,0.3);
-}
-
-.form-submit:hover { transform: translateY(-1px); opacity: 0.9; }
-
-.form-success {
-  display: none;
-  text-align: center;
-  padding: 40px;
-  background: rgba(0,212,170,0.08);
-  border: 1px solid rgba(0,212,170,0.2);
-  border-radius: 16px;
-}
-
-.form-success h3 { font-family: 'Poppins', sans-serif; font-size: 22px; margin-bottom: 8px; color: var(--green); }
-.form-success p { color: var(--text2); }
-
-@media (max-width: 768px) {
-  .testimonials-grid { grid-template-columns: 1fr; }
-  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-  .trust-strip { gap: 24px; padding: 32px 20px; }
-}
-
-/* ===== FOOTER UPDATED ===== */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  z-index: 1;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.footer-logo {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 800;
-  font-size: 16px;
-  color: var(--text);
-}
-
-.footer-links {
-  display: flex;
-  gap: 24px;
-  list-style: none;
-}
-
-.footer-links a {
-  color: var(--text3);
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.2s;
-}
-.footer-links a:hover { color: var(--text2); }
-
-.footer-copy {
-  color: var(--text3);
-  font-size: 13px;
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-  nav { padding: 16px 20px; }
-  .nav-links { display: none; }
-  .stats-strip { grid-template-columns: repeat(2, 1fr); padding: 40px 20px; }
-  .features-grid { grid-template-columns: 1fr; }
-  .steps { grid-template-columns: 1fr; gap: 32px; }
-  .section { padding: 60px 20px; }
-  footer { flex-direction: column; align-items: flex-start; padding: 32px 20px; }
+  --text:   #f0f0f8;
+  --text2:  rgba(240,240,248,0.55);
+  --text3:  rgba(240,240,248,0.28);
+  --font:   'Poppins', -apple-system, sans-serif;
+  --mono:   'DM Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.65}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.5}
+
+/* NAV */
+nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);width:min(1080px,calc(100% - 32px));z-index:200;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(14,16,32,.7);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:18px;transition:background .3s,box-shadow .3s}
+nav.scrolled{background:rgba(14,16,32,.95);box-shadow:0 8px 40px rgba(0,0,0,.5)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;color:var(--text);text-decoration:none}
+.logo-icon{width:34px;height:34px;background:linear-gradient(135deg,var(--blue),var(--purple));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.btn-nav{background:linear-gradient(135deg,var(--blue),var(--purple))!important;color:#fff!important;padding:8px 18px;border-radius:10px;font-weight:700!important;font-size:13px!important;box-shadow:0 4px 20px rgba(79,142,247,.35);transition:transform .2s,box-shadow .2s!important}
+.btn-nav:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(79,142,247,.5)!important}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:160px 24px 100px;overflow:hidden}
+.hero-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 20%,rgba(79,142,247,.1) 0%,transparent 60%),radial-gradient(ellipse 60% 60% at 80% 10%,rgba(139,92,246,.09) 0%,transparent 60%),radial-gradient(ellipse 70% 50% at 50% 90%,rgba(0,212,170,.07) 0%,transparent 60%);pointer-events:none}
+.hero-dots{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.dot{position:absolute;border-radius:50%;animation:floatDot linear infinite}
+@keyframes floatDot{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100px) scale(1);opacity:0}}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.2);padding:7px 16px;border-radius:50px;margin-bottom:28px;animation:fadeUp .8s ease both}
+.hero-eyebrow::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-title{font-size:clamp(36px,6vw,74px);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:24px;animation:fadeUp .8s .1s ease both}
+.hero-title .grad{background:linear-gradient(135deg,var(--blue) 0%,var(--green) 45%,var(--pink) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+.hero-sub{font-size:clamp(15px,2vw,19px);color:var(--text2);max-width:520px;margin:0 auto 48px;font-weight:300;line-height:1.75;animation:fadeUp .8s .2s ease both}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .3s ease both;margin-bottom:72px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;padding:15px 30px;border-radius:14px;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 8px 32px rgba(79,142,247,.35);transition:transform .2s,box-shadow .2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(79,142,247,.5)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);color:var(--text);padding:15px 30px;border-radius:14px;font-size:15px;font-weight:500;text-decoration:none;transition:transform .2s,border-color .2s}
+.btn-secondary:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.15)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* PHONE MOCKUP */
+.hero-visual{animation:fadeUp .9s .4s ease both;position:relative}
+.phone-wrap{position:relative;display:inline-block}
+.phone-wrap::before{content:'';position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);width:280px;height:100px;background:radial-gradient(ellipse,rgba(79,142,247,.4),transparent 70%);filter:blur(20px);pointer-events:none}
+.phone{width:270px;height:540px;background:linear-gradient(180deg,var(--bg3) 0%,var(--bg4) 100%);border-radius:44px;border:1.5px solid rgba(255,255,255,.1);box-shadow:0 0 0 1px rgba(255,255,255,.04),0 40px 80px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;position:relative}
+.phone-notch{width:90px;height:26px;background:var(--bg);border-radius:0 0 18px 18px;margin:0 auto}
+.phone-body{padding:12px 16px;display:flex;flex-direction:column;gap:10px}
+.phone-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.phone-appname{font-weight:800;font-size:15px;color:var(--text)}
+.phone-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--purple))}
+.phone-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.phone-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px}
+.ps-val{font-weight:800;font-size:20px;line-height:1;margin-bottom:4px}
+.ps-label{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
+.phone-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:14px}
+.pc-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.pc-title{font-size:12px;font-weight:600}
+.pc-badge{font-size:9px;font-weight:700;background:rgba(0,212,170,.15);color:var(--green);padding:3px 9px;border-radius:50px;text-transform:uppercase;letter-spacing:.5px}
+.pc-route{display:flex;flex-direction:column;gap:8px}
+.pc-row{display:flex;align-items:center;gap:8px}
+.pc-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.pc-addr{font-size:10px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pc-line{width:1px;height:12px;background:linear-gradient(to bottom,var(--green),var(--pink));margin-left:3.5px}
+.pc-miles{font-size:18px;font-weight:800;color:var(--text);text-align:right;margin-top:10px;font-family:var(--mono)}
+.float-badge{position:absolute;background:rgba(14,16,32,.9);border:1px solid var(--border);border-radius:14px;padding:12px 16px;backdrop-filter:blur(20px);white-space:nowrap;animation:floatBadge 4s ease-in-out infinite}
+.float-badge-1{top:80px;right:-115px;font-size:12px;color:var(--text2)}
+.float-badge-1 strong{color:var(--green);display:block;font-size:20px;font-weight:800}
+.float-badge-2{bottom:120px;left:-125px;font-size:12px;color:var(--text2)}
+.float-badge-2 strong{color:var(--blue);display:block;font-size:20px;font-weight:800}
+@keyframes floatBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* STATS */
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);position:relative}
+.stats::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--blue),var(--green),var(--pink),transparent)}
+.stat{padding:48px 32px;text-align:center;border-right:1px solid var(--border);transition:background .3s}
+.stat:last-child{border-right:none}
+.stat:hover{background:rgba(255,255,255,.02)}
+.stat-val{font-size:44px;font-weight:900;line-height:1;margin-bottom:8px;font-family:var(--mono)}
+.stat-val.blue{color:var(--blue)}.stat-val.green{color:var(--green)}.stat-val.pink{color:var(--pink)}.stat-val.purple{color:var(--purple)}
+.stat-label{font-size:13px;color:var(--text3);font-weight:400}
+
+/* SECTION */
+.section{padding:100px 40px;max-width:1100px;margin:0 auto;position:relative}
+.label{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:20px}
+.label::before{content:'';width:16px;height:1px;background:var(--blue)}
+h2{font-size:clamp(30px,4.5vw,52px);font-weight:800;letter-spacing:-1.5px;line-height:1.08;margin-bottom:16px}
+.lead{font-size:17px;color:var(--text2);font-weight:300;line-height:1.75;max-width:480px;margin-bottom:56px}
+
+/* BENTO */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.bento-card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:32px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s,background .3s;cursor:default}
+.bento-card::before{content:'';position:absolute;inset:0;border-radius:24px;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(79,142,247,.06),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.bento-card:hover{transform:translateY(-4px);border-color:rgba(79,142,247,.2)}
+.bento-card:hover::before{opacity:1}
+.bento-card::after{content:'';position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent)}
+.bento-card.wide{grid-column:span 2}
+.bento-icon{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px}
+.bento-icon.blue{background:rgba(79,142,247,.12);box-shadow:0 0 0 1px rgba(79,142,247,.2) inset}
+.bento-icon.green{background:rgba(0,212,170,.12);box-shadow:0 0 0 1px rgba(0,212,170,.2) inset}
+.bento-icon.pink{background:rgba(255,107,157,.12);box-shadow:0 0 0 1px rgba(255,107,157,.2) inset}
+.bento-icon.purple{background:rgba(139,92,246,.12);box-shadow:0 0 0 1px rgba(139,92,246,.2) inset}
+.bento-icon.orange{background:rgba(255,183,77,.12);box-shadow:0 0 0 1px rgba(255,183,77,.2) inset}
+.bento-icon.teal{background:rgba(0,212,212,.12);box-shadow:0 0 0 1px rgba(0,212,212,.2) inset}
+.bento-card h3{font-size:18px;font-weight:700;margin-bottom:10px;letter-spacing:-.3px}
+.bento-card p{font-size:14px;color:var(--text2);line-height:1.7}
+.bento-visual{position:absolute;right:24px;top:50%;transform:translateY(-50%);opacity:.75}
+.mini-route{display:flex;flex-direction:column;gap:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:12px 14px;width:175px}
+.mr-row{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--text2)}
+.mr-dot{width:6px;height:6px;border-radius:50%}
+
+/* HOW */
+.how-bg{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.how-bg::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;height:100%;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(79,142,247,.05),transparent);pointer-events:none}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
+.steps::before{content:'';position:absolute;top:40px;left:calc(33% - 10px);width:calc(34% + 20px);height:1px;background:linear-gradient(90deg,var(--blue),var(--green));opacity:.3}
+.step{padding:40px 32px;border-right:1px solid var(--border);position:relative}
+.step:last-child{border-right:none}
+.step-num{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,rgba(79,142,247,.15),rgba(139,92,246,.15));border:1px solid rgba(79,142,247,.2);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:var(--blue);margin-bottom:20px;font-family:var(--mono)}
+.step-icon{font-size:36px;display:block;margin-bottom:16px}
+.step h3{font-size:19px;font-weight:700;margin-bottom:10px;letter-spacing:-.3px}
+.step p{font-size:14px;color:var(--text2);line-height:1.7}
+
+/* PRICING */
+.pricing-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:820px;margin:0 auto}
+.p-card{border-radius:28px;padding:40px;position:relative;transition:transform .3s}
+.p-card:hover{transform:translateY(-4px)}
+.p-card.free{background:var(--card);border:1px solid var(--border)}
+.p-card.pro{background:linear-gradient(135deg,rgba(79,142,247,.1),rgba(139,92,246,.1));border:1px solid rgba(79,142,247,.25);box-shadow:0 0 60px rgba(79,142,247,.08),inset 0 1px 0 rgba(255,255,255,.08)}
+.p-popular{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:5px 18px;border-radius:50px;white-space:nowrap}
+.p-plan{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:16px}
+.p-price{font-size:54px;font-weight:900;line-height:1;margin-bottom:6px;letter-spacing:-2px}
+.p-price sub{font-size:20px;font-weight:400;color:var(--text2);vertical-align:baseline}
+.p-period{font-size:13px;color:var(--text3);margin-bottom:32px}
+.p-divider{height:1px;background:var(--border);margin-bottom:28px}
+.p-features{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:36px}
+.p-features li{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text2)}
+.check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.check.yes{background:rgba(0,212,170,.12);color:var(--green)}
+.check.no{background:rgba(255,255,255,.04);color:var(--text3)}
+.p-features li.dim{color:var(--text3)}
+.p-btn{display:block;width:100%;padding:15px;border-radius:14px;font-size:15px;font-weight:700;text-align:center;text-decoration:none;border:none;cursor:pointer;font-family:var(--font);transition:transform .2s,opacity .2s}
+.p-btn:hover{transform:translateY(-1px);opacity:.9}
+.p-btn.free-btn{background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--border)}
+.p-btn.pro-btn{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;box-shadow:0 8px 28px rgba(79,142,247,.35)}
+.pricing-note{text-align:center;color:var(--text3);font-size:13px;margin-top:24px}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi-card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:30px;transition:transform .3s,border-color .3s;position:relative}
+.testi-card:hover{transform:translateY(-3px);border-color:rgba(79,142,247,.2)}
+.testi-card::before{content:'"';position:absolute;top:20px;right:24px;font-size:80px;line-height:1;color:rgba(79,142,247,.08);font-family:Georgia,serif;pointer-events:none}
+.testi-stars{color:#FFB74D;font-size:14px;letter-spacing:2px;margin-bottom:14px}
+.testi-text{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:22px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.testi-name{font-size:14px;font-weight:700}
+.testi-role{font-size:12px;color:var(--text3)}
+
+/* TRUST */
+.trust{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;justify-content:center;align-items:center;gap:48px;padding:36px 40px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);font-weight:500}
+.trust-icon{width:34px;height:34px;border-radius:10px;background:rgba(0,212,170,.08);display:flex;align-items:center;justify-content:center;font-size:16px}
+
+/* FAQ */
+.faq-wrap{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .2s}
+.faq-item.open{border-color:rgba(79,142,247,.3)}
+.faq-q{width:100%;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:none;border:none;color:var(--text);font-size:15px;font-weight:600;text-align:left;cursor:pointer;font-family:var(--font)}
+.faq-q:hover{color:var(--blue)}
+.faq-arrow{width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text2);transition:transform .3s,background .2s;flex-shrink:0}
+.faq-item.open .faq-arrow{transform:rotate(45deg);background:rgba(79,142,247,.15);color:var(--blue)}
+.faq-a{max-height:0;overflow:hidden;padding:0 24px;transition:max-height .4s ease,padding .3s}
+.faq-item.open .faq-a{max-height:300px;padding:0 24px 20px}
+.faq-a p{font-size:14px;color:var(--text2);line-height:1.75}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:start}
+.contact-left h3{font-size:32px;font-weight:800;letter-spacing:-.8px;margin-bottom:16px}
+.contact-left p{font-size:15px;color:var(--text2);line-height:1.75;margin-bottom:36px}
+.contact-links{display:flex;flex-direction:column;gap:14px}
+.c-link{display:flex;align-items:center;gap:14px;color:var(--text2);text-decoration:none;font-size:14px;transition:color .2s}
+.c-link:hover{color:var(--blue)}
+.c-icon{width:40px;height:40px;border-radius:12px;background:rgba(79,142,247,.08);border:1px solid rgba(79,142,247,.12);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.form-row{margin-bottom:14px}
+.form-row label{display:block;font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:7px}
+.form-row input,.form-row textarea,.form-row select{width:100%;padding:13px 16px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:14px;font-family:var(--font);transition:border-color .2s,background .2s;-webkit-appearance:none}
+.form-row input:focus,.form-row textarea:focus,.form-row select:focus{outline:none;border-color:var(--blue);background:rgba(79,142,247,.04)}
+.form-row textarea{min-height:110px;resize:vertical}
+.form-row select option{background:var(--bg2);color:var(--text)}
+.form-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--font);box-shadow:0 8px 28px rgba(79,142,247,.3);transition:transform .2s,opacity .2s}
+.form-btn:hover{transform:translateY(-1px);opacity:.9}
+.form-success{display:none;text-align:center;padding:48px 32px;background:rgba(0,212,170,.06);border:1px solid rgba(0,212,170,.2);border-radius:20px}
+.form-success .big{font-size:52px;margin-bottom:16px}
+.form-success h3{font-size:22px;font-weight:800;color:var(--green);margin-bottom:8px}
+.form-success p{color:var(--text2);font-size:14px}
+
+/* CTA */
+.cta-wrap{text-align:center;padding:100px 24px;position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(79,142,247,.08),transparent 70%),radial-gradient(ellipse 40% 40% at 20% 80%,rgba(0,212,170,.06),transparent 60%);pointer-events:none}
+.cta-wrap h2{margin-bottom:20px;position:relative}
+.cta-wrap .sub{color:var(--text2);font-size:17px;margin-bottom:44px;font-weight:300;position:relative}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:56px 40px 32px;max-width:1100px;margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;gap:40px;margin-bottom:48px;flex-wrap:wrap}
+.footer-brand{max-width:260px}
+.footer-brand .logo{margin-bottom:14px;font-size:16px}
+.footer-brand p{font-size:13px;color:var(--text3);line-height:1.7}
+.footer-cols{display:flex;gap:56px;flex-wrap:wrap}
+.footer-col-title{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{color:var(--text3);text-decoration:none;font-size:13px;transition:color .2s}
+.footer-links a:hover{color:var(--text2)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:12px;color:var(--text3)}
+.footer-email{font-size:12px;color:var(--text3);text-decoration:none}
+.footer-email:hover{color:var(--text2)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* MOBILE */
+@media(max-width:900px){
+  .nav-links{display:none}
+  nav{top:12px}
+  .bento{grid-template-columns:1fr}
+  .bento-card.wide{grid-column:span 1}
+  .steps{grid-template-columns:1fr}
+  .step{border-right:none;border-bottom:1px solid var(--border)}
+  .step:last-child{border-bottom:none}
+  .steps::before{display:none}
+  .pricing-wrap{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr;gap:40px}
+  .trust{gap:24px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat{border-bottom:1px solid var(--border)}
+  .section{padding:64px 20px}
+  footer{padding:40px 20px 24px}
+  .footer-top{flex-direction:column}
+  .float-badge{display:none}
+}
+@media(max-width:480px){
+  .hero-btns{flex-direction:column;align-items:center}
+  .phone{width:240px;height:480px}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">
-    <div class="nav-logo-icon">🚗</div>
-    MyMilesAI
-  </a>
+<nav id="nav">
+  <a href="#" class="logo"><div class="logo-icon">🚗</div>MyMilesAI</a>
   <ul class="nav-links">
     <li><a href="#features">Features</a></li>
     <li><a href="#how">How it works</a></li>
     <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#reviews">Reviews</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="https://adsontrack1-ctrl.github.io/miletracker/" class="nav-cta">Open App →</a></li>
+    <li><a href="https://adsontrack1-ctrl.github.io/miletracker/" class="btn-nav">Open App →</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
-
-  <div class="hero-badge">✨ AI-powered mileage tracking</div>
-
-  <h1>Track Miles.<br><span class="gradient-text">Save Thousands.</span></h1>
-
-  <p class="hero-sub">MyMilesAI automatically detects your trips, classifies business vs personal, and generates IRS-ready reports. Zero effort required.</p>
-
+  <div class="hero-mesh"></div>
+  <div class="hero-dots" id="dots"></div>
+  <div class="hero-eyebrow">AI-powered mileage tracking</div>
+  <h1 class="hero-title">
+    Every mile you drive
+    <span class="grad">is money you deserve back.</span>
+  </h1>
+  <p class="hero-sub">MyMilesAI automatically tracks your business trips, classifies them with AI, and generates IRS-ready reports — so you never miss a deduction again.</p>
   <div class="hero-btns">
-    <a href="https://adsontrack1-ctrl.github.io/miletracker/" class="btn-primary">
-      Try It Free
-    </a>
-    <a href="#features" class="btn-secondary">
-      See how it works ↓
-    </a>
+    <a href="https://adsontrack1-ctrl.github.io/miletracker/" class="btn-primary">Start Tracking Free →</a>
+    <a href="#features" class="btn-secondary">See how it works ↓</a>
   </div>
-
-  <!-- Phone mockup -->
-  <div class="hero-phone">
-    <div class="phone-frame">
-      <div class="phone-notch"></div>
-      <div class="phone-screen">
-        <div class="phone-header">
-          <div class="phone-logo">MyMilesAI</div>
-          <div class="phone-avatar"></div>
-        </div>
-        <div class="phone-stat-grid">
-          <div class="phone-stat">
-            <div class="phone-stat-val blue">247.3</div>
-            <div class="phone-stat-label">Business Miles</div>
+  <div class="hero-visual">
+    <div class="phone-wrap">
+      <div class="float-badge float-badge-1"><strong>$2,847</strong>saved this year 💰</div>
+      <div class="float-badge float-badge-2"><strong>247.3</strong>business miles 📍</div>
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-body">
+          <div class="phone-topbar">
+            <div class="phone-appname">MyMilesAI</div>
+            <div class="phone-avatar"></div>
           </div>
-          <div class="phone-stat">
-            <div class="phone-stat-val pink">89.1</div>
-            <div class="phone-stat-label">Personal Miles</div>
+          <div class="phone-stats">
+            <div class="phone-stat"><div class="ps-val" style="color:var(--blue)">247.3</div><div class="ps-label">Business Miles</div></div>
+            <div class="phone-stat"><div class="ps-val" style="color:var(--pink)">89.1</div><div class="ps-label">Personal Miles</div></div>
+            <div class="phone-stat"><div class="ps-val" style="color:var(--green)">$168</div><div class="ps-label">Tax Deduction</div></div>
+            <div class="phone-stat"><div class="ps-val" style="color:var(--text)">24</div><div class="ps-label">Total Trips</div></div>
           </div>
-          <div class="phone-stat">
-            <div class="phone-stat-val green">$168.42</div>
-            <div class="phone-stat-label">Tax Deduction</div>
-          </div>
-          <div class="phone-stat">
-            <div class="phone-stat-val white">24</div>
-            <div class="phone-stat-label">Total Trips</div>
-          </div>
-        </div>
-        <div class="phone-trip">
-          <div class="phone-trip-header">
-            <div class="phone-trip-title">Today's Trip</div>
-            <div class="phone-trip-badge">BUSINESS</div>
-          </div>
-          <div class="phone-route">
-            <div class="phone-route-row">
-              <div class="phone-dot start"></div>
-              <div class="phone-route-addr">241 Kinver Avenue, Winnipeg</div>
+          <div class="phone-card">
+            <div class="pc-header"><div class="pc-title">Today's Trip</div><div class="pc-badge">Business</div></div>
+            <div class="pc-route">
+              <div class="pc-row"><div class="pc-dot" style="background:var(--green)"></div><div class="pc-addr">241 Kinver Avenue, Winnipeg</div></div>
+              <div class="pc-line"></div>
+              <div class="pc-row"><div class="pc-dot" style="background:var(--pink)"></div><div class="pc-addr">456 Portage Ave, Downtown</div></div>
             </div>
-            <div class="phone-route-row">
-              <div class="phone-dot end"></div>
-              <div class="phone-route-addr">456 Portage Ave, Downtown</div>
-            </div>
+            <div class="pc-miles">12.4 mi</div>
           </div>
-          <div class="phone-miles">12.4 miles</div>
         </div>
       </div>
     </div>
-    <div class="phone-glow"></div>
   </div>
 </section>
 
-<!-- STATS STRIP -->
-<div class="stats-strip">
-  <div class="reveal">
-    <div class="stat-item-val" data-target="0.70" data-prefix="$" data-decimals="2">$0.00</div>
-    <div class="stat-item-label">IRS rate per mile in 2025</div>
-  </div>
-  <div class="reveal">
-    <div class="stat-item-val" data-target="3500" data-prefix="$" data-suffix="+" data-decimals="0">$0</div>
-    <div class="stat-item-label">Avg annual tax savings</div>
-  </div>
-  <div class="reveal">
-    <div class="stat-item-val" data-target="100" data-suffix="%" data-decimals="0">0%</div>
-    <div class="stat-item-label">Automatic trip detection</div>
-  </div>
-  <div class="reveal">
-    <div class="stat-item-val" data-target="0" data-suffix=" min" data-decimals="0">0 min</div>
-    <div class="stat-item-label">Setup time required</div>
-  </div>
+<!-- STATS -->
+<div class="stats">
+  <div class="stat reveal"><div class="stat-val blue" data-target="0.70" data-prefix="$" data-decimals="2">$0.00</div><div class="stat-label">IRS rate per mile · 2025</div></div>
+  <div class="stat reveal"><div class="stat-val green" data-target="3500" data-prefix="$" data-suffix="+" data-decimals="0">$0</div><div class="stat-label">Avg annual tax savings</div></div>
+  <div class="stat reveal"><div class="stat-val pink" data-target="100" data-suffix="%" data-decimals="0">0%</div><div class="stat-label">Automatic trip detection</div></div>
+  <div class="stat reveal"><div class="stat-val purple" data-target="0" data-suffix=" min" data-decimals="0">0 min</div><div class="stat-label">Setup time required</div></div>
 </div>
 
 <!-- FEATURES -->
 <section class="section" id="features">
-  <div class="section-badge">Features</div>
-  <h2 class="section-title">Everything you need.<br>Nothing you don't.</h2>
-  <p class="section-sub">Built for freelancers, contractors, and small business owners who drive for work.</p>
-
-  <div class="features-grid">
-    <div class="feature-card reveal">
-      <div class="feature-icon blue">🛰️</div>
-      <h3>Auto-detect Trips</h3>
-      <p>GPS starts recording the moment you start driving. No buttons, no setup. Just drive and we handle the rest.</p>
+  <div class="label">Features</div>
+  <h2>Built for people who<br>drive for a living.</h2>
+  <p class="lead">Freelancers, contractors, nurses, agents — if you drive for work, you deserve every deduction.</p>
+  <div class="bento">
+    <div class="bento-card wide reveal">
+      <div class="bento-icon blue">🛰️</div>
+      <h3>Auto-detect every trip</h3>
+      <p>GPS begins recording the moment you start driving. No buttons. No setup. Just drive and we handle everything — start address, end address, total miles, and time.</p>
+      <div class="bento-visual">
+        <div class="mini-route">
+          <div class="mr-row"><div class="mr-dot" style="background:var(--green)"></div>241 Kinver Ave</div>
+          <div style="width:1px;height:10px;background:linear-gradient(to bottom,var(--green),var(--pink));margin-left:3px"></div>
+          <div class="mr-row"><div class="mr-dot" style="background:var(--pink)"></div>456 Portage Ave</div>
+          <div style="text-align:right;font-size:14px;font-weight:800;color:var(--text);margin-top:6px;font-family:var(--mono)">12.4 mi</div>
+        </div>
+      </div>
     </div>
-    <div class="feature-card reveal">
-      <div class="feature-icon green">🤖</div>
-      <h3>Smart Classification</h3>
-      <p>AI learns your patterns and automatically classifies trips as business or personal based on time and location.</p>
-    </div>
-    <div class="feature-card reveal">
-      <div class="feature-icon pink">💰</div>
-      <h3>Tax Deduction Calculator</h3>
-      <p>Instantly see your tax deduction based on current IRS mileage rates. Know exactly what you'll save.</p>
-    </div>
-    <div class="feature-card reveal">
-      <div class="feature-icon purple">☁️</div>
-      <h3>Cloud Sync</h3>
-      <p>All your trips sync securely across all your devices. Switch phones without losing a single mile.</p>
-    </div>
-    <div class="feature-card reveal">
-      <div class="feature-icon orange">📊</div>
-      <h3>IRS-Ready Reports</h3>
-      <p>Export detailed CSV or PDF reports at tax time. Everything formatted exactly how your accountant needs it.</p>
-    </div>
-    <div class="feature-card reveal">
-      <div class="feature-icon teal">⚡</div>
-      <h3>Trip Templates</h3>
-      <p>Save frequent routes as templates. Add common trips like "Home to Office" with one tap.</p>
-    </div>
+    <div class="bento-card reveal"><div class="bento-icon green">🤖</div><h3>AI classification</h3><p>Smart AI learns your patterns and auto-classifies trips as Business or Personal based on time, location, and history.</p></div>
+    <div class="bento-card reveal"><div class="bento-icon pink">💰</div><h3>Live tax calculator</h3><p>See your growing deduction in real-time. Know exactly how much you'll save before tax season arrives.</p></div>
+    <div class="bento-card reveal"><div class="bento-icon purple">☁️</div><h3>Cloud sync</h3><p>All trips sync securely across all your devices instantly. Switch phones without losing a single mile.</p></div>
+    <div class="bento-card reveal"><div class="bento-icon orange">📊</div><h3>IRS-ready exports</h3><p>Export as CSV or PDF at tax time. Formatted exactly how your accountant needs it — no extra work required.</p></div>
+    <div class="bento-card reveal"><div class="bento-icon teal">⚡</div><h3>Trip templates</h3><p>Save frequent routes. Add "Home → Office" with one tap instead of entering addresses every single time.</p></div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
 <div class="how-bg" id="how">
   <section class="section">
-    <div class="section-badge">How It Works</div>
-    <h2 class="section-title">Three steps.<br>That's it.</h2>
-    <p class="section-sub">Up and running in under a minute. No hardware, no OBD devices needed.</p>
-
+    <div class="label">How it works</div>
+    <h2>Three steps.<br>That's genuinely it.</h2>
+    <p class="lead">Up and running in under 60 seconds. No hardware, no OBD devices, no complicated setup.</p>
     <div class="steps">
-      <div class="step reveal">
-        <div class="step-num">01</div>
-        <span class="step-icon">📱</span>
-        <h3>Open the app</h3>
-        <p>Sign in with Google. That's the only thing you'll ever do manually. We take care of everything else from here.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">02</div>
-        <span class="step-icon">🚗</span>
-        <h3>Just drive</h3>
-        <p>MyMilesAI detects when you start moving and automatically records your route, distance, and time.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">03</div>
-        <span class="step-icon">💸</span>
-        <h3>Save at tax time</h3>
-        <p>Export your mileage log as a PDF or CSV. Hand it to your accountant and collect your deduction.</p>
-      </div>
+      <div class="step reveal"><div class="step-num">01</div><span class="step-icon">📱</span><h3>Sign in with Google</h3><p>That's the only thing you'll ever do manually. One tap and your account is created, secured, and ready to go.</p></div>
+      <div class="step reveal"><div class="step-num">02</div><span class="step-icon">🚗</span><h3>Just drive</h3><p>MyMilesAI detects when you start moving and records your route automatically. No buttons to press, ever.</p></div>
+      <div class="step reveal"><div class="step-num">03</div><span class="step-icon">💸</span><h3>Collect your deduction</h3><p>Export your mileage log at tax time. Hand it to your accountant and get your hard-earned money back.</p></div>
     </div>
   </section>
 </div>
 
 <!-- PRICING -->
 <section class="section" id="pricing" style="text-align:center">
-  <div class="section-badge" style="display:inline-block">Pricing</div>
-  <h2 class="section-title">Simple, transparent pricing.</h2>
-  <p class="section-sub" style="margin: 0 auto 60px">Start free. Upgrade when you're ready. Cancel anytime.</p>
-
-  <div class="pricing-grid">
-    <!-- FREE -->
-    <div class="pricing-card reveal">
-      <div class="pricing-plan">Free</div>
-      <div class="pricing-price">$0<span>/mo</span></div>
-      <div class="pricing-period">Forever free</div>
-      <div class="pricing-divider"></div>
-      <ul class="pricing-features">
-        <li>Last 30 days of trips</li>
-        <li>Auto GPS trip detection</li>
-        <li>Business & personal categories</li>
-        <li>Manual trip entry</li>
-        <li>Basic CSV export</li>
-        <li class="no">Unlimited trip history</li>
-        <li class="no">PDF reports</li>
-        <li class="no">Email reports</li>
-        <li class="no">Trip templates</li>
-        <li class="no">Priority support</li>
+  <div class="label" style="justify-content:center">Pricing</div>
+  <h2>Simple, honest pricing.</h2>
+  <p class="lead" style="margin:0 auto 56px">Start free. Upgrade when you're ready. No tricks, no hidden fees.</p>
+  <div class="pricing-wrap">
+    <div class="p-card free reveal">
+      <div class="p-plan">Free forever</div>
+      <div class="p-price">$0<sub>/mo</sub></div>
+      <div class="p-period">No credit card needed</div>
+      <div class="p-divider"></div>
+      <ul class="p-features">
+        <li><span class="check yes">✓</span> Last 30 days of trips</li>
+        <li><span class="check yes">✓</span> Auto GPS detection</li>
+        <li><span class="check yes">✓</span> Business & personal split</li>
+        <li><span class="check yes">✓</span> Manual trip entry</li>
+        <li><span class="check yes">✓</span> Basic CSV export</li>
+        <li class="dim"><span class="check no">×</span> Unlimited history</li>
+        <li class="dim"><span class="check no">×</span> PDF & email reports</li>
+        <li class="dim"><span class="check no">×</span> Trip templates</li>
       </ul>
-      <a href="https://adsontrack1-ctrl.github.io/miletracker/" class="pricing-btn free">Get Started Free</a>
+      <a href="https://adsontrack1-ctrl.github.io/miletracker/" class="p-btn free-btn">Get Started Free</a>
     </div>
-
-    <!-- PRO -->
-    <div class="pricing-card pro reveal">
-      <div class="pricing-plan">Pro</div>
-      <div class="pricing-price">$4.99<span>/mo</span></div>
-      <div class="pricing-period">or $39/year — save 35%</div>
-      <div class="pricing-divider"></div>
-      <ul class="pricing-features">
-        <li>Everything in Free</li>
-        <li>Unlimited trip history</li>
-        <li>PDF & email reports</li>
-        <li>Trip templates</li>
-        <li>IRS-ready tax reports</li>
-        <li>Weekly summary emails</li>
-        <li>Multi-vehicle support</li>
-        <li>Priority support</li>
-        <li>Early access to new features</li>
-        <li>14-day free trial</li>
+    <div class="p-card pro reveal">
+      <div class="p-popular">Most Popular</div>
+      <div class="p-plan">Pro</div>
+      <div class="p-price">$4.99<sub>/mo</sub></div>
+      <div class="p-period">or $39/year — save 35%</div>
+      <div class="p-divider"></div>
+      <ul class="p-features">
+        <li><span class="check yes">✓</span> Everything in Free</li>
+        <li><span class="check yes">✓</span> Unlimited trip history</li>
+        <li><span class="check yes">✓</span> PDF & email reports</li>
+        <li><span class="check yes">✓</span> Trip templates</li>
+        <li><span class="check yes">✓</span> IRS & CRA tax reports</li>
+        <li><span class="check yes">✓</span> Weekly summaries</li>
+        <li><span class="check yes">✓</span> Priority support</li>
+        <li><span class="check yes">✓</span> 14-day free trial</li>
       </ul>
-      <a href="https://adsontrack1-ctrl.github.io/miletracker/" class="pricing-btn pro-btn">Start Free Trial</a>
+      <a href="https://adsontrack1-ctrl.github.io/miletracker/" class="p-btn pro-btn">Start Free Trial →</a>
     </div>
   </div>
-  <div class="pricing-note">✓ No credit card required to start &nbsp;·&nbsp; ✓ Cancel anytime &nbsp;·&nbsp; ✓ 14-day money back guarantee</div>
+  <div class="pricing-note">✓ No credit card to start &nbsp;·&nbsp; ✓ Cancel anytime &nbsp;·&nbsp; ✓ 14-day money-back guarantee</div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="section" id="testimonials">
-  <div class="section-badge">Testimonials</div>
-  <h2 class="section-title">Loved by freelancers<br>& small businesses.</h2>
-  <p class="section-sub">Join thousands who save money at tax time with MyMilesAI.</p>
+<div class="how-bg" id="reviews">
+  <section class="section">
+    <div class="label">Reviews</div>
+    <h2>People who drive for work<br>love MyMilesAI.</h2>
+    <p class="lead">Join thousands of freelancers and small business owners saving at tax time.</p>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I used to log every trip in a spreadsheet. MyMilesAI does it automatically. I got $2,800 back at tax time — money I would have just left on the table."</p>
+        <div class="testi-author"><div class="testi-avatar" style="background:rgba(79,142,247,.12)">👨‍💼</div><div><div class="testi-name">James R.</div><div class="testi-role">Real Estate Agent, Texas</div></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"As a home care nurse I drive constantly. MyMilesAI tracks everything and the IRS report is exactly what my accountant needs. Total game changer."</p>
+        <div class="testi-author"><div class="testi-avatar" style="background:rgba(255,107,157,.12)">👩‍⚕️</div><div><div class="testi-name">Sarah M.</div><div class="testi-role">Home Care Nurse, Ontario</div></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Best mileage app I've used. Works in the browser, no download needed. The auto-detection is incredibly accurate. Must-have for any contractor."</p>
+        <div class="testi-author"><div class="testi-avatar" style="background:rgba(0,212,170,.12)">🔧</div><div><div class="testi-name">Mike T.</div><div class="testi-role">Independent Contractor, BC</div></div></div>
+      </div>
+    </div>
+  </section>
+</div>
 
-  <div class="testimonials-grid">
-    <div class="testimonial-card reveal">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">"I used to manually log every trip in a spreadsheet. MyMilesAI does it all automatically. Saved me 5+ hours a month and I got $2,800 back at tax time!"</p>
-      <div class="testimonial-author">
-        <div class="author-avatar" style="background:rgba(79,142,247,0.15)">👨‍💼</div>
-        <div>
-          <div class="author-name">James R.</div>
-          <div class="author-role">Real Estate Agent, Texas</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card reveal">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">"As a nurse visiting patients at home, I drive constantly. This app tracks everything and the IRS report is exactly what my accountant needs. Incredible!"</p>
-      <div class="testimonial-author">
-        <div class="author-avatar" style="background:rgba(255,107,157,0.15)">👩‍⚕️</div>
-        <div>
-          <div class="author-name">Sarah M.</div>
-          <div class="author-role">Home Care Nurse, Ontario</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card reveal">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">"Best mileage app I've tried. Works right in the browser, no download needed. The auto-detection is scary accurate. Highly recommend for any contractor!"</p>
-      <div class="testimonial-author">
-        <div class="author-avatar" style="background:rgba(0,212,170,0.15)">🔧</div>
-        <div>
-          <div class="author-name">Mike T.</div>
-          <div class="author-role">Independent Contractor, BC</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TRUST BADGES -->
-<div class="trust-strip">
-  <div class="trust-badge reveal">
-    <div class="trust-badge-icon">🔒</div>
-    <span>256-bit encrypted</span>
-  </div>
-  <div class="trust-badge reveal">
-    <div class="trust-badge-icon">☁️</div>
-    <span>Google secured cloud</span>
-  </div>
-  <div class="trust-badge reveal">
-    <div class="trust-badge-icon">💳</div>
-    <span>14-day money back</span>
-  </div>
-  <div class="trust-badge reveal">
-    <div class="trust-badge-icon">🇨🇦</div>
-    <span>Canada & US ready</span>
-  </div>
-  <div class="trust-badge reveal">
-    <div class="trust-badge-icon">📋</div>
-    <span>IRS & CRA compliant</span>
-  </div>
+<!-- TRUST -->
+<div class="trust">
+  <div class="trust-item reveal"><div class="trust-icon">🔒</div> 256-bit encrypted</div>
+  <div class="trust-item reveal"><div class="trust-icon">☁️</div> Google secured cloud</div>
+  <div class="trust-item reveal"><div class="trust-icon">💳</div> 14-day money back</div>
+  <div class="trust-item reveal"><div class="trust-icon">📋</div> IRS & CRA compliant</div>
+  <div class="trust-item reveal"><div class="trust-icon">🌍</div> Canada & US ready</div>
 </div>
 
 <!-- FAQ -->
 <section class="section" id="faq" style="text-align:center">
-  <div class="section-badge" style="display:inline-block">FAQ</div>
-  <h2 class="section-title">Frequently asked questions.</h2>
-  <p class="section-sub" style="margin: 0 auto 48px">Everything you need to know about MyMilesAI.</p>
-
-  <div class="faq-list">
-    <div class="faq-item reveal">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        Do I need to download anything?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>No downloads required! MyMilesAI runs entirely in your browser. Just open the link on your iPhone or Android and it works like a native app. You can also add it to your home screen for quick access.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        How does automatic trip detection work?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>When you open MyMilesAI and enable GPS, it monitors your movement. When you start driving (speed above a threshold), it automatically begins recording your trip. When you stop, it saves the trip with start/end addresses and total distance.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        Is my location data private?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Absolutely. Your location data is only used to calculate trip distances and is stored securely in your personal account. We never sell or share your data with third parties. GPS is only active when you have the app open.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        What's the IRS mileage rate for 2025?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>The IRS standard mileage rate for 2025 is $0.70 per mile for business use. In Canada, the CRA rate is $0.72 per km for the first 5,000 km. MyMilesAI automatically calculates your deduction using the correct rate.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        Can I use this for both personal and business trips?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Yes! You can classify each trip as Business or Personal. Only business miles count toward your tax deduction. MyMilesAI tracks both separately and shows you exactly how much you can deduct.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        What formats can I export my mileage log?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>You can export as CSV (for Excel/spreadsheets) or PDF (for printing or emailing to your accountant). Both formats include all trip details required by the IRS and CRA.</p>
-      </div>
-    </div>
-    <div class="faq-item reveal">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        Can I cancel my Pro subscription anytime?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Yes, cancel anytime with no questions asked. Your data is always yours to export. We also offer a 14-day money back guarantee — if you're not satisfied, we'll refund you in full.</p>
-      </div>
-    </div>
+  <div class="label" style="justify-content:center">FAQ</div>
+  <h2>Frequently asked questions.</h2>
+  <p class="lead" style="margin:0 auto 48px">Everything you need to know before getting started.</p>
+  <div class="faq-wrap">
+    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">Do I need to download anything? <span class="faq-arrow">+</span></button><div class="faq-a"><p>No downloads required. MyMilesAI runs entirely in your browser. Open the link on any iPhone or Android and it works like a native app. Add it to your home screen for one-tap access.</p></div></div>
+    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">How does automatic trip detection work? <span class="faq-arrow">+</span></button><div class="faq-a"><p>When you open the app and enable GPS, it monitors your movement. When you start driving, it automatically records your route. When you stop, it saves the trip with start/end addresses and total distance.</p></div></div>
+    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">Is my location data private? <span class="faq-arrow">+</span></button><div class="faq-a"><p>Absolutely. Your location is only used to calculate distances and stored securely in your personal account. We never sell your data. GPS is only active when you have the app open.</p></div></div>
+    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">What's the IRS mileage rate for 2025? <span class="faq-arrow">+</span></button><div class="faq-a"><p>The IRS standard mileage rate is $0.70 per mile for 2025 business use. In Canada, the CRA rate is $0.72/km for the first 5,000 km. MyMilesAI automatically applies the correct rate for your region.</p></div></div>
+    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">What export formats are available? <span class="faq-arrow">+</span></button><div class="faq-a"><p>Export as CSV (for Excel) or PDF (for printing or emailing). Both include all trip details required by the IRS and CRA — date, start/end addresses, business purpose, and total miles.</p></div></div>
+    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">Can I cancel my Pro subscription anytime? <span class="faq-arrow">+</span></button><div class="faq-a"><p>Yes, cancel anytime with no questions asked. Your data is always yours to export. We also offer a 14-day money-back guarantee — not satisfied, full refund, no hassle.</p></div></div>
   </div>
 </section>
 
@@ -1502,55 +486,28 @@ footer {
 <div class="how-bg">
   <section class="section" id="contact">
     <div class="contact-grid">
-      <div class="contact-info">
-        <div class="section-badge">Contact</div>
+      <div class="contact-left">
+        <div class="label">Contact</div>
         <h3>We'd love to<br>hear from you.</h3>
-        <p>Have a question, feature request, or just want to say hi? We respond to every message within 24 hours.</p>
+        <p>Question, feature request, or just want to say hi? We respond to every message within 24 hours.</p>
         <div class="contact-links">
-          <a href="mailto:hello@mymilesai.com" class="contact-link">
-            <div class="contact-link-icon">📧</div>
-            hello@mymilesai.com
-          </a>
-          <a href="https://mymilesai.com" class="contact-link">
-            <div class="contact-link-icon">🌐</div>
-            mymilesai.com
-          </a>
-          <a href="https://adsontrack1-ctrl.github.io/miletracker/" class="contact-link">
-            <div class="contact-link-icon">🚗</div>
-            Open the App
-          </a>
+          <a href="mailto:hello@mymilesai.com" class="c-link"><div class="c-icon">📧</div>hello@mymilesai.com</a>
+          <a href="https://mymilesai.com" class="c-link"><div class="c-icon">🌐</div>mymilesai.com</a>
+          <a href="https://adsontrack1-ctrl.github.io/miletracker/" class="c-link"><div class="c-icon">🚗</div>Open the App</a>
         </div>
       </div>
       <div>
-        <div id="contact-form">
-          <div class="form-group">
-            <label>Your Name</label>
-            <input type="text" id="cf-name" placeholder="John Smith">
-          </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" id="cf-email" placeholder="john@example.com">
-          </div>
-          <div class="form-group">
-            <label>Subject</label>
-            <select id="cf-subject">
-              <option>General question</option>
-              <option>Feature request</option>
-              <option>Bug report</option>
-              <option>Billing / subscription</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea id="cf-message" placeholder="Tell us how we can help..."></textarea>
-          </div>
-          <button class="form-submit" onclick="submitForm()">Send Message →</button>
+        <div id="cf">
+          <div class="form-row"><label>Your Name</label><input type="text" id="cf-name" placeholder="John Smith"></div>
+          <div class="form-row"><label>Email</label><input type="email" id="cf-email" placeholder="john@example.com"></div>
+          <div class="form-row"><label>Subject</label><select id="cf-subject"><option>General question</option><option>Feature request</option><option>Bug report</option><option>Billing / subscription</option><option>Other</option></select></div>
+          <div class="form-row"><label>Message</label><textarea id="cf-msg" placeholder="How can we help?"></textarea></div>
+          <button class="form-btn" onclick="submitForm()">Send Message →</button>
         </div>
-        <div class="form-success" id="form-success">
-          <div style="font-size:48px;margin-bottom:16px">✅</div>
+        <div class="form-success" id="cf-success">
+          <div class="big">✅</div>
           <h3>Message sent!</h3>
-          <p>Thanks for reaching out. We'll get back to you within 24 hours.</p>
+          <p>Thanks for reaching out. We'll reply within 24 hours.</p>
         </div>
       </div>
     </div>
@@ -1558,28 +515,25 @@ footer {
 </div>
 
 <!-- CTA -->
-<section class="cta-section" id="contact">
-  <div class="cta-glow"></div>
-  <h2>Start tracking.<br><span class="gradient-text">Stop leaving money behind.</span></h2>
-  <p>Free to use. No credit card. No downloads required — runs right in your browser.</p>
-  <div class="hero-btns" style="margin-bottom:0">
-    <a href="https://adsontrack1-ctrl.github.io/miletracker/" class="btn-primary">
-      Open MyMilesAI Free
-    </a>
-  </div>
-</section>
+<div class="cta-wrap">
+  <div class="cta-bg"></div>
+  <div class="label" style="justify-content:center">Get Started</div>
+  <h2>Stop leaving money<br><span style="background:linear-gradient(135deg,var(--blue),var(--green),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">on the table.</span></h2>
+  <p class="sub">Free to use. No credit card. No downloads. Works right in your browser.</p>
+  <a href="https://adsontrack1-ctrl.github.io/miletracker/" class="btn-primary" style="display:inline-flex">Start Tracking Free →</a>
+</div>
 
 <!-- FOOTER -->
-<footer style="flex-direction:column; gap:32px; padding:48px 40px;">
-  <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:20px;">
-    <div>
-      <div class="footer-logo" style="font-size:20px; margin-bottom:8px;">🚗 MyMilesAI</div>
-      <div style="color:var(--text3); font-size:13px; max-width:260px; line-height:1.6;">Smart mileage tracking powered by AI. Save thousands at tax time.</div>
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo"><div class="logo-icon">🚗</div>MyMilesAI</a>
+      <p>Smart mileage tracking powered by AI. Built for freelancers and small business owners who drive for work.</p>
     </div>
-    <div style="display:flex; gap:60px; flex-wrap:wrap;">
+    <div class="footer-cols">
       <div>
-        <div style="font-size:11px; font-weight:700; color:var(--text3); text-transform:uppercase; letter-spacing:1px; margin-bottom:14px;">Product</div>
-        <ul class="footer-links" style="flex-direction:column; gap:10px;">
+        <div class="footer-col-title">Product</div>
+        <ul class="footer-links">
           <li><a href="#features">Features</a></li>
           <li><a href="#how">How it works</a></li>
           <li><a href="#pricing">Pricing</a></li>
@@ -1587,8 +541,9 @@ footer {
         </ul>
       </div>
       <div>
-        <div style="font-size:11px; font-weight:700; color:var(--text3); text-transform:uppercase; letter-spacing:1px; margin-bottom:14px;">Company</div>
-        <ul class="footer-links" style="flex-direction:column; gap:10px;">
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#reviews">Reviews</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="privacy.html">Privacy Policy</a></li>
@@ -1597,90 +552,87 @@ footer {
       </div>
     </div>
   </div>
-  <div style="width:100%; height:1px; background:var(--border);"></div>
-  <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:12px;">
+  <div class="footer-bottom">
     <div class="footer-copy">© 2026 MyMilesAI. All rights reserved.</div>
-    <div style="display:flex; gap:16px;">
-      <a href="mailto:hello@mymilesai.com" style="color:var(--text3); font-size:13px; text-decoration:none;">📧 hello@mymilesai.com</a>
-    </div>
+    <a href="mailto:hello@mymilesai.com" class="footer-email">📧 hello@mymilesai.com</a>
   </div>
 </footer>
 
 <script>
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 80);
-    }
-  });
-}, { threshold: 0.1 });
+/* NAV scroll */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
+});
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+/* Floating dots */
+const colors=['#4F8EF7','#00D4AA','#FF6B9D','#8B5CF6'];
+const dotsEl=document.getElementById('dots');
+for(let i=0;i<18;i++){
+  const d=document.createElement('div');
+  const size=Math.random()*4+2;
+  d.className='dot';
+  d.style.cssText=`width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};left:${Math.random()*100}%;animation-duration:${Math.random()*15+10}s;animation-delay:-${Math.random()*15}s;opacity:0.4;`;
+  dotsEl.appendChild(d);
+}
 
-// Counter animation
-function animateCounter(el) {
-  const target = parseFloat(el.dataset.target);
-  const prefix = el.dataset.prefix || '';
-  const suffix = el.dataset.suffix || '';
-  const decimals = parseInt(el.dataset.decimals) || 0;
-  const duration = 1800;
-  const start = performance.now();
+/* Scroll reveal */
+const ro=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*80);});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
-  function update(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    // Ease out
-    const ease = 1 - Math.pow(1 - progress, 3);
-    const current = target * ease;
-    const formatted = decimals > 0
-      ? current.toFixed(decimals)
-      : Math.floor(current).toLocaleString();
-    el.textContent = prefix + formatted + suffix;
-    if (progress < 1) requestAnimationFrame(update);
+/* Counter */
+function animateCounter(el){
+  if(el.dataset.animated)return;
+  el.dataset.animated='1';
+  const target=parseFloat(el.dataset.target);
+  const prefix=el.dataset.prefix||'';
+  const suffix=el.dataset.suffix||'';
+  const decimals=parseInt(el.dataset.decimals)||0;
+  const start=performance.now();
+  function update(now){
+    const p=Math.min((now-start)/2000,1);
+    const ease=1-Math.pow(1-p,3);
+    const val=target*ease;
+    el.textContent=prefix+(decimals>0?val.toFixed(decimals):Math.floor(val).toLocaleString())+suffix;
+    if(p<1)requestAnimationFrame(update);
   }
   requestAnimationFrame(update);
 }
-
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && entry.target.dataset.target !== undefined) {
-      animateCounter(entry.target);
-      counterObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.5 });
-
-// FAQ toggle
-function toggleFaq(btn) {
-  const item = btn.closest('.faq-item');
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
-
-// Contact form
-function submitForm() {
-  const name = document.getElementById('cf-name').value.trim();
-  const email = document.getElementById('cf-email').value.trim();
-  const message = document.getElementById('cf-message').value.trim();
-  if (!name || !email || !message) {
-    alert('Please fill in all required fields.');
-    return;
-  }
-  document.getElementById('contact-form').style.display = 'none';
-  document.getElementById('form-success').style.display = 'block';
-}
-
-// Update nav active state on scroll
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('nav');
-  if (window.scrollY > 50) {
-    nav.style.background = 'rgba(8,9,18,0.95)';
-  } else {
-    nav.style.background = 'rgba(8,9,18,0.8)';
-  }
+const co=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting&&e.target.dataset.target!==undefined){animateCounter(e.target);co.unobserve(e.target);}});
+},{threshold:0.3});
+document.querySelectorAll('[data-target]').forEach(el=>co.observe(el));
+window.addEventListener('load',()=>{
+  setTimeout(()=>{document.querySelectorAll('[data-target]').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight)animateCounter(el);});},500);
 });
+
+/* Bento mouse glow */
+document.querySelectorAll('.bento-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+    card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+  });
+});
+
+/* FAQ */
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item');
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!open)item.classList.add('open');
+}
+
+/* Contact form */
+function submitForm(){
+  const name=document.getElementById('cf-name').value.trim();
+  const email=document.getElementById('cf-email').value.trim();
+  const msg=document.getElementById('cf-msg').value.trim();
+  if(!name||!email||!msg){alert('Please fill in all fields.');return;}
+  document.getElementById('cf').style.display='none';
+  document.getElementById('cf-success').style.display='block';
+}
 </script>
 </body>
 </html>
