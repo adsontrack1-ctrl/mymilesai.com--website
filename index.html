@@ -132,8 +132,8 @@ nav.scrolled{background:rgba(14,16,32,.95);box-shadow:0 8px 40px rgba(0,0,0,.5)}
 .hero{min-height:100vh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:160px 24px 100px;overflow:hidden}
 .hero-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 20%,rgba(79,142,247,.1) 0%,transparent 60%),radial-gradient(ellipse 60% 60% at 80% 10%,rgba(139,92,246,.09) 0%,transparent 60%),radial-gradient(ellipse 70% 50% at 50% 90%,rgba(0,212,170,.07) 0%,transparent 60%);pointer-events:none}
 .hero-dots{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.dot{position:absolute;border-radius:50%;animation:floatDot linear infinite}
-@keyframes floatDot{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100px) scale(1);opacity:0}}
+.dot{position:absolute;border-radius:50%;animation:floatDot linear infinite;will-change:transform;transform:translateZ(0)}
+@keyframes floatDot{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:.6}90%{opacity:.6}100%{transform:translateY(-100px) scale(1);opacity:0}}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.2);padding:7px 16px;border-radius:50px;margin-bottom:28px;animation:fadeUp .8s ease both}
 .hero-eyebrow::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 2s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
@@ -156,7 +156,7 @@ nav.scrolled{background:rgba(14,16,32,.95);box-shadow:0 8px 40px rgba(0,0,0,.5)}
 .phone-body{padding:12px 16px;display:flex;flex-direction:column;gap:10px}
 .phone-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
 .phone-appname{font-weight:800;font-size:15px;color:var(--text)}
-.phone-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--purple))}
+.phone-avatar{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
 .phone-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .phone-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px}
 .ps-val{font-weight:800;font-size:20px;line-height:1;margin-bottom:4px}
@@ -346,6 +346,19 @@ footer{border-top:1px solid var(--border);padding:56px 40px 32px;max-width:1100p
 .footer-email{font-size:12px;color:var(--text3);text-decoration:none}
 .footer-email:hover{color:var(--text2)}
 
+/* Store badges */
+.store-badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:-8px;margin-bottom:16px}
+.store-badge{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:10px 18px;cursor:not-allowed;position:relative;transition:border-color .2s;min-width:155px}
+.store-badge:hover{border-color:rgba(255,255,255,0.18)}
+.store-badge-icon{font-size:26px;flex-shrink:0;line-height:1}
+.store-badge-text{text-align:left}
+.store-badge-sub{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;font-weight:600;display:block}
+.store-badge-name{font-size:14px;font-weight:700;color:var(--text2);display:block;line-height:1.2}
+.store-coming{position:absolute;top:-8px;right:10px;background:rgba(255,183,77,0.15);border:1px solid rgba(255,183,77,0.3);color:#FFB74D;font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:50px;white-space:nowrap}
+.mobile-badges{display:none;gap:12px;margin-top:24px;justify-content:center}
+.mobile-badge{background:rgba(14,16,32,.95);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 20px;text-align:center;font-size:12px;color:var(--text2);min-width:140px}
+.mobile-badge strong{color:var(--green);display:block;font-size:22px;font-weight:800;font-family:var(--mono);letter-spacing:-0.5px;line-height:1.1;margin-bottom:4px}
+
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -369,9 +382,13 @@ footer{border-top:1px solid var(--border);padding:56px 40px 32px;max-width:1100p
   .section{padding:64px 20px}
   footer{padding:40px 20px 24px}
   .footer-top{flex-direction:column}
+  /* On mobile: hide side badges, show bottom badges row */
   .float-badge{display:none}
+  .mobile-badges{display:flex}
   .phone-wrap{margin:0}
   .bento-route-demo{flex-direction:column;align-items:flex-start}
+  /* Fewer dots on mobile for performance */
+  .hero{padding:120px 16px 80px}
 }
 @media(max-width:480px){
   .hero-btns{flex-direction:column;align-items:center}
@@ -408,6 +425,26 @@ footer{border-top:1px solid var(--border);padding:56px 40px 32px;max-width:1100p
     <a href="https://adsontrack1-ctrl.github.io/miletracker/" class="btn-primary">Start Tracking Free →</a>
     <a href="#features" class="btn-secondary">See how it works ↓</a>
   </div>
+
+  <!-- App Store Badges -->
+  <div class="store-badges">
+    <div class="store-badge">
+      <div class="store-coming">Coming Soon</div>
+      <div class="store-badge-icon">🍎</div>
+      <div class="store-badge-text">
+        <span class="store-badge-sub">Download on the</span>
+        <span class="store-badge-name">App Store</span>
+      </div>
+    </div>
+    <div class="store-badge">
+      <div class="store-coming">Coming Soon</div>
+      <div class="store-badge-icon">▶️</div>
+      <div class="store-badge-text">
+        <span class="store-badge-sub">Get it on</span>
+        <span class="store-badge-name">Google Play</span>
+      </div>
+    </div>
+  </div>
   <div class="hero-visual">
     <div class="phone-wrap">
       <div class="float-badge float-badge-1"><strong>$2,847</strong>saved this year 💰</div>
@@ -417,7 +454,7 @@ footer{border-top:1px solid var(--border);padding:56px 40px 32px;max-width:1100p
         <div class="phone-body">
           <div class="phone-topbar">
             <div class="phone-appname">MyMilesAI</div>
-            <div class="phone-avatar"></div>
+            <div class="phone-avatar">🚗</div>
           </div>
           <div class="phone-stats">
             <div class="phone-stat"><div class="ps-val" style="color:var(--blue)">247.3</div><div class="ps-label">Business Miles</div></div>
@@ -435,6 +472,17 @@ footer{border-top:1px solid var(--border);padding:56px 40px 32px;max-width:1100p
             <div class="pc-miles">12.4 mi</div>
           </div>
         </div>
+      </div>
+    </div>
+    <!-- Shown only on mobile below the phone -->
+    <div class="mobile-badges">
+      <div class="mobile-badge">
+        <strong>$2,847</strong>
+        <span>saved this year 💰</span>
+      </div>
+      <div class="mobile-badge">
+        <strong style="color:var(--blue)">247.3 mi</strong>
+        <span>business miles 📍</span>
       </div>
     </div>
   </div>
@@ -650,6 +698,24 @@ footer{border-top:1px solid var(--border);padding:56px 40px 32px;max-width:1100p
   <h2>Stop leaving money<br><span style="background:linear-gradient(135deg,var(--blue),var(--green),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">on the table.</span></h2>
   <p class="sub">Free to use. No credit card. No downloads. Works right in your browser.</p>
   <a href="https://adsontrack1-ctrl.github.io/miletracker/" class="btn-primary" style="display:inline-flex">Start Tracking Free →</a>
+  <div class="store-badges" style="margin-top:28px">
+    <div class="store-badge" style="opacity:0.6">
+      <div class="store-coming">Coming Soon</div>
+      <div class="store-badge-icon">🍎</div>
+      <div class="store-badge-text">
+        <span class="store-badge-sub">Download on the</span>
+        <span class="store-badge-name">App Store</span>
+      </div>
+    </div>
+    <div class="store-badge" style="opacity:0.6">
+      <div class="store-coming">Coming Soon</div>
+      <div class="store-badge-icon">▶️</div>
+      <div class="store-badge-text">
+        <span class="store-badge-sub">Get it on</span>
+        <span class="store-badge-name">Google Play</span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- FOOTER -->
@@ -693,10 +759,11 @@ window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
 });
 
-/* Floating dots */
+/* Floating dots - fewer on mobile for performance */
 const colors=['#4F8EF7','#00D4AA','#FF6B9D','#8B5CF6'];
 const dotsEl=document.getElementById('dots');
-for(let i=0;i<18;i++){
+const dotCount = window.innerWidth < 600 ? 8 : 18;
+for(let i=0;i<dotCount;i++){
   const d=document.createElement('div');
   const size=Math.random()*4+2;
   d.className='dot';
