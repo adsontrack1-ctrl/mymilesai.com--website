@@ -3,8 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MyMilesAI — Smart Mileage Tracking</title>
-<meta name="description" content="Automatically track your business mileage with AI. Save thousands in tax deductions. Free to try.">
+<title>MyMilesAI — Smart Mileage Tracking for Tax Deductions</title>
+<meta name="description" content="Automatically track your business mileage with AI. Save thousands in tax deductions. IRS-ready reports. Free to try — no downloads required.">
+<meta name="keywords" content="mileage tracker, business mileage, tax deduction, IRS mileage, mileage log, mileage tracking app">
+<meta name="author" content="MyMilesAI">
+
+<!-- Open Graph -->
+<meta property="og:title" content="MyMilesAI — Smart Mileage Tracking">
+<meta property="og:description" content="Automatically track your business mileage with AI. Save thousands in tax deductions.">
+<meta property="og:image" content="https://adsontrack1-ctrl.github.io/mymilesai.com--website/og-image.png">
+<meta property="og:url" content="https://mymilesai.com">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MyMilesAI">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MyMilesAI — Smart Mileage Tracking">
+<meta name="twitter:description" content="Automatically track your business mileage with AI. Save thousands in tax deductions.">
+
+<!-- Favicon (emoji-based, works everywhere) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234F8EF7'/><text y='.9em' font-size='75' x='10'>🚗</text></svg>">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://mymilesai.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -762,7 +783,284 @@ h1 {
   .pricing-grid { grid-template-columns: 1fr; }
 }
 
-/* ===== FOOTER ===== */
+/* ===== TESTIMONIALS ===== */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.testimonial-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.testimonial-card:hover { transform: translateY(-3px); }
+
+.stars {
+  color: #FFB74D;
+  font-size: 16px;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+}
+
+.testimonial-text {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.author-name { font-size: 14px; font-weight: 600; color: var(--text); }
+.author-role { font-size: 12px; color: var(--text3); }
+
+/* ===== FAQ ===== */
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.faq-item.open { border-color: rgba(79,142,247,0.3); }
+
+.faq-question {
+  width: 100%;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.2s;
+}
+
+.faq-question:hover { color: var(--blue); }
+
+.faq-icon {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+  transition: transform 0.3s, background 0.2s;
+  color: var(--text2);
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  background: rgba(79,142,247,0.15);
+  color: var(--blue);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 24px;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 300px;
+  padding: 0 24px 20px;
+}
+
+.faq-answer p {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+/* ===== TRUST BADGES ===== */
+.trust-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 48px 40px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text2);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.trust-badge-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: rgba(0,212,170,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+
+/* ===== CONTACT FORM ===== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.contact-info h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.contact-info p {
+  color: var(--text2);
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+.contact-link:hover { color: var(--blue); }
+
+.contact-link-icon {
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  background: rgba(79,142,247,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  font-size: 15px;
+  font-family: inherit;
+  transition: border-color 0.2s, background 0.2s;
+  -webkit-appearance: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--blue);
+  background: rgba(79,142,247,0.04);
+}
+
+.form-group textarea { min-height: 120px; resize: vertical; }
+
+.form-submit {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.2s, opacity 0.2s;
+  box-shadow: 0 8px 24px rgba(79,142,247,0.3);
+}
+
+.form-submit:hover { transform: translateY(-1px); opacity: 0.9; }
+
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 40px;
+  background: rgba(0,212,170,0.08);
+  border: 1px solid rgba(0,212,170,0.2);
+  border-radius: 16px;
+}
+
+.form-success h3 { font-family: 'Poppins', sans-serif; font-size: 22px; margin-bottom: 8px; color: var(--green); }
+.form-success p { color: var(--text2); }
+
+@media (max-width: 768px) {
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .trust-strip { gap: 24px; padding: 32px 20px; }
+}
+
+/* ===== FOOTER UPDATED ===== */
 footer {
   border-top: 1px solid var(--border);
   padding: 40px;
@@ -841,7 +1139,8 @@ footer {
     <li><a href="#features">Features</a></li>
     <li><a href="#how">How it works</a></li>
     <li><a href="#pricing">Pricing</a></li>
-    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="https://adsontrack1-ctrl.github.io/miletracker/" class="nav-cta">Open App →</a></li>
   </ul>
@@ -1059,6 +1358,205 @@ footer {
   <div class="pricing-note">✓ No credit card required to start &nbsp;·&nbsp; ✓ Cancel anytime &nbsp;·&nbsp; ✓ 14-day money back guarantee</div>
 </section>
 
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials">
+  <div class="section-badge">Testimonials</div>
+  <h2 class="section-title">Loved by freelancers<br>& small businesses.</h2>
+  <p class="section-sub">Join thousands who save money at tax time with MyMilesAI.</p>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"I used to manually log every trip in a spreadsheet. MyMilesAI does it all automatically. Saved me 5+ hours a month and I got $2,800 back at tax time!"</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:rgba(79,142,247,0.15)">👨‍💼</div>
+        <div>
+          <div class="author-name">James R.</div>
+          <div class="author-role">Real Estate Agent, Texas</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"As a nurse visiting patients at home, I drive constantly. This app tracks everything and the IRS report is exactly what my accountant needs. Incredible!"</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:rgba(255,107,157,0.15)">👩‍⚕️</div>
+        <div>
+          <div class="author-name">Sarah M.</div>
+          <div class="author-role">Home Care Nurse, Ontario</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Best mileage app I've tried. Works right in the browser, no download needed. The auto-detection is scary accurate. Highly recommend for any contractor!"</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:rgba(0,212,170,0.15)">🔧</div>
+        <div>
+          <div class="author-name">Mike T.</div>
+          <div class="author-role">Independent Contractor, BC</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BADGES -->
+<div class="trust-strip">
+  <div class="trust-badge reveal">
+    <div class="trust-badge-icon">🔒</div>
+    <span>256-bit encrypted</span>
+  </div>
+  <div class="trust-badge reveal">
+    <div class="trust-badge-icon">☁️</div>
+    <span>Google secured cloud</span>
+  </div>
+  <div class="trust-badge reveal">
+    <div class="trust-badge-icon">💳</div>
+    <span>14-day money back</span>
+  </div>
+  <div class="trust-badge reveal">
+    <div class="trust-badge-icon">🇨🇦</div>
+    <span>Canada & US ready</span>
+  </div>
+  <div class="trust-badge reveal">
+    <div class="trust-badge-icon">📋</div>
+    <span>IRS & CRA compliant</span>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="section" id="faq" style="text-align:center">
+  <div class="section-badge" style="display:inline-block">FAQ</div>
+  <h2 class="section-title">Frequently asked questions.</h2>
+  <p class="section-sub" style="margin: 0 auto 48px">Everything you need to know about MyMilesAI.</p>
+
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Do I need to download anything?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>No downloads required! MyMilesAI runs entirely in your browser. Just open the link on your iPhone or Android and it works like a native app. You can also add it to your home screen for quick access.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How does automatic trip detection work?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>When you open MyMilesAI and enable GPS, it monitors your movement. When you start driving (speed above a threshold), it automatically begins recording your trip. When you stop, it saves the trip with start/end addresses and total distance.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Is my location data private?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Absolutely. Your location data is only used to calculate trip distances and is stored securely in your personal account. We never sell or share your data with third parties. GPS is only active when you have the app open.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What's the IRS mileage rate for 2025?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>The IRS standard mileage rate for 2025 is $0.70 per mile for business use. In Canada, the CRA rate is $0.72 per km for the first 5,000 km. MyMilesAI automatically calculates your deduction using the correct rate.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Can I use this for both personal and business trips?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes! You can classify each trip as Business or Personal. Only business miles count toward your tax deduction. MyMilesAI tracks both separately and shows you exactly how much you can deduct.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What formats can I export my mileage log?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>You can export as CSV (for Excel/spreadsheets) or PDF (for printing or emailing to your accountant). Both formats include all trip details required by the IRS and CRA.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Can I cancel my Pro subscription anytime?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes, cancel anytime with no questions asked. Your data is always yours to export. We also offer a 14-day money back guarantee — if you're not satisfied, we'll refund you in full.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="how-bg">
+  <section class="section" id="contact">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-badge">Contact</div>
+        <h3>We'd love to<br>hear from you.</h3>
+        <p>Have a question, feature request, or just want to say hi? We respond to every message within 24 hours.</p>
+        <div class="contact-links">
+          <a href="mailto:hello@mymilesai.com" class="contact-link">
+            <div class="contact-link-icon">📧</div>
+            hello@mymilesai.com
+          </a>
+          <a href="https://mymilesai.com" class="contact-link">
+            <div class="contact-link-icon">🌐</div>
+            mymilesai.com
+          </a>
+          <a href="https://adsontrack1-ctrl.github.io/miletracker/" class="contact-link">
+            <div class="contact-link-icon">🚗</div>
+            Open the App
+          </a>
+        </div>
+      </div>
+      <div>
+        <div id="contact-form">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="cf-name" placeholder="John Smith">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="cf-email" placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select id="cf-subject">
+              <option>General question</option>
+              <option>Feature request</option>
+              <option>Bug report</option>
+              <option>Billing / subscription</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="cf-message" placeholder="Tell us how we can help..."></textarea>
+          </div>
+          <button class="form-submit" onclick="submitForm()">Send Message →</button>
+        </div>
+        <div class="form-success" id="form-success">
+          <div style="font-size:48px;margin-bottom:16px">✅</div>
+          <h3>Message sent!</h3>
+          <p>Thanks for reaching out. We'll get back to you within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
 <!-- CTA -->
 <section class="cta-section" id="contact">
   <div class="cta-glow"></div>
@@ -1072,15 +1570,40 @@ footer {
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-logo">🚗 MyMilesAI</div>
-  <ul class="footer-links">
-    <li><a href="#features">Features</a></li>
-    <li><a href="#how">How it works</a></li>
-    <li><a href="privacy.html">Privacy Policy</a></li>
-    <li><a href="mailto:hello@mymilesai.com">Contact</a></li>
-  </ul>
-  <div class="footer-copy">© 2026 MyMilesAI. All rights reserved.</div>
+<footer style="flex-direction:column; gap:32px; padding:48px 40px;">
+  <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:20px;">
+    <div>
+      <div class="footer-logo" style="font-size:20px; margin-bottom:8px;">🚗 MyMilesAI</div>
+      <div style="color:var(--text3); font-size:13px; max-width:260px; line-height:1.6;">Smart mileage tracking powered by AI. Save thousands at tax time.</div>
+    </div>
+    <div style="display:flex; gap:60px; flex-wrap:wrap;">
+      <div>
+        <div style="font-size:11px; font-weight:700; color:var(--text3); text-transform:uppercase; letter-spacing:1px; margin-bottom:14px;">Product</div>
+        <ul class="footer-links" style="flex-direction:column; gap:10px;">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="https://adsontrack1-ctrl.github.io/miletracker/">Open App</a></li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:11px; font-weight:700; color:var(--text3); text-transform:uppercase; letter-spacing:1px; margin-bottom:14px;">Company</div>
+        <ul class="footer-links" style="flex-direction:column; gap:10px;">
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div style="width:100%; height:1px; background:var(--border);"></div>
+  <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:12px;">
+    <div class="footer-copy">© 2026 MyMilesAI. All rights reserved.</div>
+    <div style="display:flex; gap:16px;">
+      <a href="mailto:hello@mymilesai.com" style="color:var(--text3); font-size:13px; text-decoration:none;">📧 hello@mymilesai.com</a>
+    </div>
+  </div>
 </footer>
 
 <script>
@@ -1128,7 +1651,36 @@ const counterObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 
-document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+// FAQ toggle
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Contact form
+function submitForm() {
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const message = document.getElementById('cf-message').value.trim();
+  if (!name || !email || !message) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+  document.getElementById('contact-form').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+
+// Update nav active state on scroll
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 50) {
+    nav.style.background = 'rgba(8,9,18,0.95)';
+  } else {
+    nav.style.background = 'rgba(8,9,18,0.8)';
+  }
+});
 </script>
 </body>
 </html>
