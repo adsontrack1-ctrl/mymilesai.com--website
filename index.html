@@ -411,7 +411,7 @@ h1 {
 }
 
 .stat-item-val {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Inter', -apple-system, sans-serif;
   font-size: 40px;
   font-weight: 800;
   background: linear-gradient(135deg, var(--blue), var(--green));
@@ -920,19 +920,19 @@ footer {
 <!-- STATS STRIP -->
 <div class="stats-strip">
   <div class="reveal">
-    <div class="stat-item-val">$0.70</div>
+    <div class="stat-item-val" data-target="0.70" data-prefix="$" data-decimals="2">$0.00</div>
     <div class="stat-item-label">IRS rate per mile in 2025</div>
   </div>
   <div class="reveal">
-    <div class="stat-item-val">$3,500+</div>
+    <div class="stat-item-val" data-target="3500" data-prefix="$" data-suffix="+" data-decimals="0">$0</div>
     <div class="stat-item-label">Avg annual tax savings</div>
   </div>
   <div class="reveal">
-    <div class="stat-item-val">100%</div>
+    <div class="stat-item-val" data-target="100" data-suffix="%" data-decimals="0">0%</div>
     <div class="stat-item-label">Automatic trip detection</div>
   </div>
   <div class="reveal">
-    <div class="stat-item-val">0 min</div>
+    <div class="stat-item-val" data-target="0" data-suffix=" min" data-decimals="0">0 min</div>
     <div class="stat-item-label">Setup time required</div>
   </div>
 </div>
@@ -1094,6 +1094,41 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Counter animation
+function animateCounter(el) {
+  const target = parseFloat(el.dataset.target);
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix || '';
+  const decimals = parseInt(el.dataset.decimals) || 0;
+  const duration = 1800;
+  const start = performance.now();
+
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    // Ease out
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const current = target * ease;
+    const formatted = decimals > 0
+      ? current.toFixed(decimals)
+      : Math.floor(current).toLocaleString();
+    el.textContent = prefix + formatted + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && entry.target.dataset.target !== undefined) {
+      animateCounter(entry.target);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
 </script>
 </body>
 </html>
